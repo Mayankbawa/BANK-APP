@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>MANKU BAWA BANK</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script type="text/javascript" src="login.js"></script>
+
+	<script type="text/javascript" src="servercall.js"></script>
+	
+</head>
+<body>
+	 <div class="mask disp-none">
+        <img src="loader.gif" />
+     </div>
+	 <header> BANK APP</header>
+
+	 <div id="menu">
+	  <b id="person"></b>
+	 	
+	 	<a href="createaccount.html" style="color: #402e20">CreateAccount</a>
+	 	<a href="deposit.html">Deposit</a>
+	 	<a href="Withdraw.html">Withdrawl</a>
+	 	<a href="transactions.html">PrintTransactions</a>
+	 	<a href="Update.html">Update</a>
+	 	<a href="login.html" onclick="fnLogout()">Logout</a>
+	 </div>
+	 <div class="createacc">
+	 	<h1 align="center"> Create Account</h1>
+	 	<table cellspacing="12">
+	 		<tr>
+	 			<td>UserId:</td>
+	 			<td><input id="uid" type="" name="" placeholder="Enter userid"></td>
+	 		</tr>
+	 		<tr>
+	 			<td>Password:</td>
+	 			<td><input id= "pwd" type="Password" name="" placeholder="Enter Password"></td>
+	 		</tr>
+	 		<tr>
+	 			<td>Account NO:</td>
+	 			<td><input id="acno" type="" name="" placeholder="Enter Account no"></td>
+	 		</tr>
+	 		
+	 			<td>Customer Name</td>
+	 			<td><input id= "name" type="" name="" placeholder="Enter your name"></td>
+	 		</tr>
+	 		<tr>
+	 			<td>Phone</td>
+	 			<td><input id= "phno" type="number" name="" placeholder="Enter Phone no"></td>
+	 		</tr>
+	 		<tr>
+	 			<td>E-mail</td>
+	 			<td><input id="email" type="" name="" placeholder="Enter your email"></td>
+	 		</tr>
+	 		<tr>
+	 			<td>Balance</td>
+	 			<td><input id="balance" type="number" name="" placeholder="initial amount"></td>
+	 		</tr>
+	 		<tr>
+	 			<td>Account Type:</td>
+	 			<td><select id="acctype">
+  					<option value="">Current A/c</option>
+  					<option value="">Saving A/c</option>
+					</select></td>
+	 		</tr>
+	 		<tr>
+	 			<td>Role:</td>
+	 			<td><select id="role">
+  					<option value="Customer">Customer</option>
+					</select></td>
+	 		</tr>
+	 		<tr>
+	 			<td></td>
+	 			<td><input type="button" name="" value="Create" onclick="fncreateacc()"></td>
+	 		</tr>
+	 	</table>
+	 </div>
+	
+
+	 <footer>&copy; Belongs to manku bawa!</footer>
+</body>
+<script type="text/javascript" src="createacc.js"></script>
+</html>

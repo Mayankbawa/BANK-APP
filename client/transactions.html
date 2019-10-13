@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>BANK</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script type="text/javascript" src="login.js"></script>
+	<script type="text/javascript" src="servercall.js"></script>
+	
+</head>
+<body>
+	 <div class="mask disp-none">
+        <img src="loader.gif" />
+     </div>
+	 <header>BANK APP</header>
+	 <div id="menu">
+	 	 <b id="person"></b>
+	 	<a href="createaccount.html">CreateAccount</a>
+	 	<a href="deposit.html">Deposit</a>
+	 	<a href="withdraw.html">Withdrawl</a>
+	 	<a href="transactions.html" style="color: #402e20">PrintTransactions</a>
+	 	<a href="Update.html">Update</a>
+	 	<a href="login.html" onclick="fnLogout()">Logout</a>
+	 </div>
+	<div id='result'></div>	
+
+	 <footer>&copy; Belongs to manku bawa!</footer>
+
+
+	 <script type="text/javascript">
+	 	function fntranscations(){
+
+	 		sendReq(
+            'get',
+            'http://localhost:2020/bankaccount/all-transac',
+            undefined,
+            function (res) {
+                debugger;	
+              var res = JSON.parse(res);
+                if (res.length > 0) {
+                    var trs = '';
+                    res.forEach(function (o, i) {
+                    
+                        trs = trs + '<tr><td rowspan='+ o.transactions.length +'>' + o.accno + '</td><td rowspan='+ o.transactions.length +'>' + o.name + '</td>';
+
+                        o.transactions.forEach(function (obj) {
+                            trs = trs + '<td>' + obj.type + '</td><td>' + obj.date + '</td><td>' + obj.amount + '</td></tr>'
+                        });
+                        
+                    });
+
+                    var tbl = "<table border=1px ><tr><th>Account Number</th><th>Name</th><th>Type</th><th>Date</th><th>Amount</th></tr>" + trs + "</table>";
+
+                    document.getElementById('result').innerHTML = tbl;
+                    
+
+
+                } else {
+                    alert('nothing  found');
+                }   
+            },
+            function (res) {
+                debugger;
+            }
+
+        )
+    }
+
+    	fntranscations();
+    	fnIsLoggedIn();
+    	var user = sessionStorage.getItem('uid');
+document.getElementById('person').innerText = user;
+
+	 
+	 </script>
+</body>
+</html>

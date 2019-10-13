@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>BANK</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script type="text/javascript" src="servercall.js"></script>
+</head>
+<body>
+	<div class="mask disp-none">
+        <img src="loader.gif" />
+     </div>
+	<header>BANK APP</header>
+	<div id="menu">
+		<b id="person"></b>
+	 	<a href="userdetail.html"style="color: #402e20">Account</a>
+	 	<a href="printTransaction.html">Transactions</a>
+	 	<a href= "login.html" onclick="fnLogout()"> Logout</a>
+	 </div>
+	
+	<div id="content" class="disp-none">
+		<p>
+		<div>UserId: <b id="disp-uid"></b></div>
+		<div>Password: <b id="disp-pwd"></b></div>
+		<div>Email: <b id="disp-email"></b></div>
+		<div>Acctype: <b id="disp-acctype"></b></div>
+		<div>Balance: <b id="disp-balance"></b></div>
+	    <div>Name: <b id="disp-name"></b></div>
+	    <div>AccountNo: <b id="disp-acc"></b></div>
+		<div>Phone: <b id="disp-phone"></b></div>
+		</p>
+
+    </div>
+
+	<footer>&copy; Belongs to manku bawa!</footer>
+	
+	<script type="text/javascript">
+		 
+		user = sessionStorage.getItem('uid');
+		acc = sessionStorage.getItem('acc');
+
+		 function fnuser(){
+
+	 		sendReq(
+            'get',
+            'http://localhost:2020/bankaccount/get-acc?accno='+acc,
+            undefined,
+            function (res) {
+                debugger;	
+                var res = JSON.parse(res);
+                if(res ==''){
+                	alert('nothing found');
+                	return;
+				}else if(res.uid == user){
+                		document.querySelector('#content').classList.remove('disp-none');
+                		document.querySelector('#disp-uid').innerText=res.uid;
+                		document.querySelector('#disp-pwd').innerText=res.pwd;
+                		document.querySelector('#disp-email').innerText=res.email;
+                		document.querySelector('#disp-acctype').innerText=res.acctype;
+                		document.querySelector('#disp-balance').innerText=res.amount;
+                		document.querySelector('#disp-name').innerText=res.name;
+                		document.querySelector('#disp-acc').innerText=res.accno;
+                		document.querySelector('#disp-phone').innerText=res.phno;
+                } 
+                else {
+                    alert('nothing found');
+                }   
+            },
+            function (res) {
+                debugger;
+            }
+        )
+    }
+    	fnIsLoggedIn();
+		document.getElementById('person').innerText = user;
+    	fnuser();
+    	
+
+	 </script>
+</body>
+</html>

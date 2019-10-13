@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>BANK</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script type="text/javascript" src="servercall.js"></script>
+</head>
+<body>
+	<div class="mask disp-none">
+        <img src="loader.gif" />
+     </div>
+	<header>BANK APP</header>
+	<div id="menu">
+		<b id="person"></b>
+	 	<a href="createaccount.html">CreateAccount</a>
+	 	<a href="deposit.html">Deposit</a>
+	 	<a href="withdraw.html">Withdrawl</a>
+	 	<a href="transactions.html">PrintTransactions</a>
+	 	<a href="Update.html" style="color: #402e20">Update</a>
+	 	<a href="login.html" onclick="fnLogout()">Logout</a>
+	 </div>
+	<div class="search1">
+	</br>
+	
+		Account No:<input id ="actno" type="" name=""/></td></tr>
+		<input type="Button" name="" value="Search" onclick="fnSearch()" />
+	</div>
+
+		<div class="createacc disp-none" id='update-content'>
+	 	<table cellspacing="12">
+	 		<tr>
+	 			<td>UserId:</td>
+	 			<td><input id="uid" type="" name="" placeholder="ram"></td>
+	 		</tr>
+	 		<tr>
+	 			<td>Password:</td>
+	 			<td><input id= "pwd" type="Password" name="" placeholder="ram123"></td>
+	 		</tr>
+	 		
+	 		
+	 			<td>Customer Name</td>
+	 			<td><input id= "name" type="" name="" placeholder="Ram Lal"></td>
+	 		</tr>
+	 		<tr>
+	 			<td>Phone</td>
+	 			<td><input id= "phno" type="number" name="" placeholder="8171431855"></td>
+	 		</tr>
+	 		<tr>
+	 			<td>E-mail</td>
+	 			<td><input id="email" type="" name="" placeholder="ram@123gmail.com"></td>
+	 		</tr>
+	 		<tr>
+	 			<td>Balance</td>
+	 			<td><input id="balance" type="number" name="" placeholder="initial amount"></td>
+	 		</tr>
+	 		<tr>
+	 			<td>Account Type:</td>
+	 			<td><select id="acctype">
+  					<option value="">Current A/c</option>
+  					<option value="">Saving A/c</option>
+					</select></td>
+	 		</tr>
+	 		<tr>
+	 			<td>Role:</td>
+	 			<td><select id="role">
+  					<option value="Customer">Customer</option>
+					</select></td>
+	 		</tr>
+	 		<tr>
+	 			<td></td>
+	 			<td><input type="button" name="" value="Upadate" onclick="fnupdate()"></td>
+	 		</tr>
+	 	</table>
+	 </div>
+	
+	<footer>&copy; Belongs to manku bawa!</footer>
+
+	<script type="text/javascript">
+	
+
+	function fnSearch(){
+
+    var uidRef = document.getElementById('uid')
+	var pwdRef = document.getElementById('pwd')
+	var accnoRef = document.getElementById('actno')
+	var updateCotentRef=document.querySelector('#update-content');
+	var nameRef = document.getElementById('name')
+	var phRef = document.getElementById('phno')
+	var emailRef = document.getElementById('email')
+	var banlanceRef = document.getElementById('balance')
+	var roleRef = document.getElementById('role')
+	var acctypeRef = document.getElementById('acctype');
+	
+	var accno = accnoRef.value;
+
+    if(accno == ''){
+        alert('please enter accno');
+        return;
+    }
+
+
+    sendReq(
+        'get',
+        'http://localhost:2020/bankaccount/get-acc?accno='+accno,
+        undefined,
+        function(res){
+            debugger;
+            if(res == ''){
+                alert('please enter valid accno');
+            }else{
+                res=JSON.parse(res);
+                updateCotentRef.classList.remove('disp-none');
+                uidRef.value = res.uid;
+                pwdRef.value = res.pwd;
+                nameRef.value = res.name;
+                phRef.value = res.phno;
+                emailRef.value = res.email;
+                banlanceRef.value=res.amount;
+                roleRef.value = res.role;
+                acctypeRef.text = res.acctype;
+
+            }
+        },
+        function(res){
+            debugger;
+        }
+    )
+
+}
+
+
+		function fnupdate(){
+
+			var uidRef = document.getElementById('uid')
+			var pwdRef = document.getElementById('pwd')
+			var accnoRef = document.getElementById('actno')
+			var updateCotentRef=document.querySelector('#update-content');
+			var nameRef = document.getElementById('name')
+			var phRef = document.getElementById('phno')
+			var emailRef = document.getElementById('email')
+			var banlanceRef = document.getElementById('balance')
+			var roleRef = document.getElementById('role')
+			var acctypeRef = document.getElementById('acctype');
+			
+			var uid = uidRef.value;
+			var pwd = pwdRef.value;
+			var accno = accnoRef.value;
+			var name = nameRef.value;
+			var phno =phRef.value;
+			var email = emailRef.value;
+			var amount = banlanceRef.value;
+			var role = roleRef.options[roleRef.selectedIndex].value;
+			var acctype = acctypeRef.options[acctypeRef.selectedIndex].text;
+
+
+			if( uid == '' || pwd == ''|| accno == '' || name == '' || phno == '' || email == '' || acctype == '' || role == ''){
+		        alert('check u r data');
+		        return;
+
+		    }
+
+
+			var dataObj = {
+
+		         'uid': uid,
+		         'pwd': pwd,
+		         'accno': accno,
+		         'name': name,
+		         'phno': phno,
+		         'email': email,
+		         'amount':amount,
+		         'role'	: role,
+		         'acctype': acctype
+
+			}
+
+			sendReq(
+		        'post',
+		        'http://localhost:2020/bankaccount/cust-update',
+		        dataObj,
+		        function(res){
+		            debugger;
+		            res=JSON.parse(res);
+		            if(res.ok == 1 && res.nModified == 1){
+		                alert('updated successfully');
+		                accnoRef.value='';
+		                updateCotentRef.classList.add('disp-none');
+		            }else{
+		                alert('not updated...try again');
+		            }
+		        },
+		        function(res){
+		            debugger;
+		            alert(res);
+		        }
+		    )
+
+		}
+
+		fnIsLoggedIn();
+		var user = sessionStorage.getItem('uid');
+		document.getElementById('person').innerText = user;
+
+				
+</script>
+</body>
+</html>

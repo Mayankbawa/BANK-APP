@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>BANK</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script type="text/javascript" src="deposit.js"></script>
+	<script type="text/javascript" src="servercall.js"></script>
+</head>
+<body>
+	<div class="mask disp-none">
+        <img src="loader.gif" />
+     </div>
+	<header>BANK APP</header>
+	<div id="menu">
+	 	<a href="createaccount.html">CreateAccount</a>
+	 	<a href="deposit.html" style="color: #402e20">Deposit</a>
+	 	<a href="withdraw.html">Withdrawl</a>
+	 	<a href="transactions.html">PrintTransactions</a>
+	 	<a href="Update.html">Update</a>
+	 	<a href="login.html" onclick="fnLogout()">Logout</a>
+	 </div>
+	<div class="search">
+	</br>
+	
+		Account No:<input id ="acno" type="" name=""/></td></tr>
+		<input type="Button" name="" value="Search" onclick="fnSearch()" />
+	</div>
+
+	<div id="content" class="disp-none">
+		<p>
+	    <div>Name: <b id="disp-name"></b></div>
+	    <div>AccountNo: <b id="disp-acc"></b></div>
+		<div>Phone: <b id="disp-phone"></b></div>
+		</p>
+		<p>
+		    Amount:<input type="number" id='amt' />
+		</p>
+		<p>
+		    Date:<input type="text" id="dt" />
+		</p>
+
+		<p>
+		    <input type='button' value="Deposit" onclick="fndeposit()" />
+		</p>
+
+    </div>
+
+	<footer>&copy; Belongs to manku bawa!</footer>
+</body>
+</html>

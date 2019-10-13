@@ -1,0 +1,174 @@
+header{
+	background: #f56636;
+	height: 70px;
+	color:  white;
+	font-size: 60px;
+	text-align: center;
+	font-family: 'Hepta Slab', serif;
+	letter-spacing: 10px;
+	padding-top: 5px;	
+}
+
+body{
+	margin: 0;
+	position: relative;
+	font-family: 'Open Sans', sans-serif;
+	background-image: url('Rajah-Solid-Color-Background-Wallpaper-5120x2880.png');
+	background-repeat: no-repeat;
+}
+
+footer{
+	position: fixed;
+	bottom: 0;
+	background: #f56636;
+	height: 50px;
+	width: 100%;
+	color:  white;
+	font-size: 30px;
+	text-align: center;
+	font-family: 'Hepta Slab', serif;
+	letter-spacing: 10px;
+
+}
+
+.login{
+	position: relative;
+	border: solid;
+	display: inline-block;
+	height: 150px;
+	width: 320px;
+	background: #f56636;
+	left: 615px;
+    top: 219px;
+}
+
+#loader{
+    position: relative;
+    width: 35px;
+    top: 200px;
+}
+
+.disp-none{
+    display: none;
+}
+
+.mask{
+    background: black;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0.7;
+}
+
+.mask > img{
+    position: fixed;
+    left: 40%;
+    top: 25%;
+}
+
+table{
+	margin-top: 15px;
+}
+
+#msg{
+	color: white;
+
+}
+
+
+#menu{
+	background: #b83509;
+	height: 50px;
+	line-height: 50px;
+	word-spacing: 10px;
+	text-align: right;
+	padding-right: 5px;
+	
+}
+#menu a{
+        color: white;
+        text-decoration:    none;
+        font-size: 20px;
+        
+    }
+    
+#menu a:hover{
+    text-decoration: blink;
+    color: #782206;
+    font-weight: bolder;
+    }
+
+  .createacc{
+  	background: #e8430c;
+  	border: solid 2px;
+  	width: 500px;
+  	position: relative;
+  	left: 520px;
+    top: 70px;
+    color: white;
+    font-size: 15px;
+  }
+
+  .search{
+
+  	position: relative;
+	border: solid;
+	display: inline-block;
+	height: 50px;
+	width: 330px;
+	background: #f56636;
+	left: 615px;
+    top: 90px;
+    color: white;
+    text-align: center;
+
+
+  }
+
+  #content{
+  	position: relative;
+	border: solid;
+	height: 250px;
+	width: 500px;
+	background: #f56636;
+	left: 500px;
+    top: 129px;
+    color: white;
+    text-align: center;
+
+  }
+
+  .search1{
+
+  	position: relative;
+	border: solid;
+	display: inline-block;
+	height: 50px;
+	width: 330px;
+	background: #f56636;
+	left: 0px;
+    top: 0px;
+    color: white;
+    text-align: center;
+}
+
+#result{
+	background: #e8430c;
+  	width: 530px;
+  	height: 180px;
+  	position: relative;
+  	left: 420px;
+    top: 100px;
+    color: white;
+    font-size: 15px;
+    
+    }
+
+   #person{
+   	font-size: 25px;
+   	text-transform: uppercase;
+   	color: white;
+    float: left;
+   }
