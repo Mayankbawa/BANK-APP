@@ -10,7 +10,7 @@ router.get('/get-acc', function (req, res) {
     }
 
     var mongoClient = mongo.MongoClient;
-    var url = "mongodb+srv://manku:manku@cluster0-u9dbl.mongodb.net/test?retryWrites=true&w=majority"
+    var url = "write your own url"
     
     mongoClient.connect(url,{ useNewUrlParser: true },function(err,project){
          if(err){
@@ -49,7 +49,7 @@ router.post('/deposit',function(req,res){
      }
 
      var mongoClient = mongo.MongoClient;
-     var url = "mongodb+srv://manku:manku@cluster0-u9dbl.mongodb.net/test?retryWrites=true&w=majority"
+     var url = "write your own url"
      mongoClient.connect(url,{ useNewUrlParser: true },function(err,project){
           if(err){
               res.send('db connection err');
@@ -109,7 +109,7 @@ router.post('/deposit',function(req,res){
     };
 
      var mongoClient = mongo.MongoClient;
-    var url = "mongodb+srv://manku:manku@cluster0-u9dbl.mongodb.net/test?retryWrites=true&w=majority"
+    var url = "write your own url"
     mongoClient.connect(url,{ useNewUrlParser: true },function(err,project){
          if(err){
              res.send('db connection err');
@@ -164,7 +164,7 @@ router.post('/deposit',function(req,res){
 
 router.get('/get-user',function(req,res){
      var mongoClient = mongo.MongoClient;
-   var url = "mongodb+srv://manku:manku@cluster0-u9dbl.mongodb.net/test?retryWrites=true&w=majority"
+   var url = "write your own url"
     mongoClient.connect(url,function(err,project){
         if(err){
             res.send('db error');
@@ -202,7 +202,7 @@ router.post('/withdraw',function(req,res){
     }
 
     var mongoClient = mongo.MongoClient;
-    var url = "mongodb+srv://manku:manku@cluster0-u9dbl.mongodb.net/test?retryWrites=true&w=majority"
+    var url = "write your own url"
     mongoClient.connect(url,{ useNewUrlParser: true },function(err,project){
          if(err){
              res.send('db connection err');
@@ -233,7 +233,7 @@ router.post('/withdraw',function(req,res){
 
 router.get('/all-transac',function(req,res){
     var mongoClient = mongo.MongoClient;
-    var url = "mongodb+srv://manku:manku@cluster0-u9dbl.mongodb.net/test?retryWrites=true&w=majority"
+    var url = "write your own url"
    mongoClient.connect(url,function(err,project){
        if(err){
            res.send('db error');
