@@ -17,7 +17,7 @@ router.post('/login',function(req,res){
     }
 
     var mongoClient = mongo.MongoClient;
-    var url = "mongodb+srv://manku:manku@cluster0-u9dbl.mongodb.net/test?retryWrites=true&w=majority"
+    var url = "write your own url"
     mongoClient.connect(url,{ useNewUrlParser: true },function(err,project){
          if(err){
              res.send('db connection err');
@@ -67,7 +67,7 @@ router.post('/login',function(req,res){
      }
 
      var mongoClient = mongo.MongoClient;
-   var url = "mongodb+srv://manku:manku@cluster0-u9dbl.mongodb.net/test?retryWrites=true&w=majority"
+   var url = "write your own url"
     mongoClient.connect(url,{ useNewUrlParser: true },function(err,project){
          if(err){
              res.send('db connection err');
